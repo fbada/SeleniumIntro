@@ -11,7 +11,9 @@ public class AppleGoogle extends BaseTest{
         setUp("https://www.google.com");
 
         WebElement searchBox = driver.findElement(By.name("q"));
-        searchBox.sendKeys("apple" + Keys.ENTER);
+        searchBox.sendKeys("apple"+Keys.ENTER);
+
+    //    driver.findElement(By.name("btnK")).click();
 
         WebElement appleLink = driver.findElement(By.partialLinkText("Apple"));
 

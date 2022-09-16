@@ -3,7 +3,7 @@ package com.cydeo.test.Day002_locators_getText_getAttribut.PracticeInClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Task2 extends BaseTest{
+public class ABTask extends BaseTest{
 
     public static void main(String[] args) throws InterruptedException {
 
