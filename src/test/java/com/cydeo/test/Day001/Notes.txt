@@ -1,0 +1,77 @@
+Maven project:
+----------------------------------
+- "build" automation tool
+- "build" -> refers to repeating steps when creating an obj
+- Maven project itself is diff than java proj
+- Maven is not a tool for testers, mainly for tool for devs, we use it for dependency
+             organization and folder str
+
+SRC folder
+----------------------------------
+> main: where devs will write their code
+> test: this is where the devs will write their unit tests
+        -> we write our tests here as well
+> pom.xml: used to add and manage the dependencies of the project
+> target: where maven is storing the compiled version of the project and other info
+                -> used for storing HTML reports
+                -> only appears after you run your code
+                -> consistently refreshed when code is run
+
+Selenium methods:
+----------------------------------
+#1. What does it do?
+#2. Does it accept any args?
+#3. Does it have any return type?
+#4. Does it throw and certain type of exception?
+
+>>> get("");
+    -> #1. Gets the given URL in opened browser
+    -> #2. Accepts a String arg
+    -> #3. void; no return type
+
+>>>.getTitle() ;
+    #1. Gets the title of the page
+    #2. none
+    #3.returns String; title of the page
+
+>>> .getCurrentUrl();
+     #1. Gets the URL of the current page
+     #2. none
+     #3.returns String; url of the current page
+
+>>> driver.manage().window().maximize();
+       #1. Expands the current page to max size
+       #2. none
+       #3. void; no return type
+
+>>> Why is it critical to maximize the page?
+    -> in different sizes, the content will display differently due to reactive frameworks
+    -> happens when the page is "responsive"
+        -> if size gets smaller, it will display less content
+        ->may trigger a hamburger menu
+
+>>>driver.close();
+   -> will close only the currently opened session
+   -> if we have more than one window open, it will only close the one that it is focused on
+
+>>>driver.quit();
+    -> it will kill the current session
+    -> means if we have more than one open window/page, it will close all of them
+    -> after using driver.quit(), we can NOT execute any lines after this
+    -> will throw a "NoSuchSessionException"
+
+> What is a session?
+
+
+
+Basic Navigations:
+----------------------------------
+    driver.navigate() --> allows us to do simple navigations'
+    driver.navigate().foreword() --> will take page to the next page
+    driver.navigate().back() --> will take page to previous page
+    driver.navigate().refresh() --> will refresh the current page
+    driver.navigate(),to() --> exactly the same as .get("URL") method
+
+
+
+

@@ -1,0 +1,69 @@
+REVIEW
+-------------------------------------------------------
+MAVEN
+pom.xml -> stands for Project Object Model
+    -> .xml extension
+    -> POM as page object model is actually a design pattern
+    -> most important file in Maven project folder
+    -> manage(add, remove, alter etc...)
+o Maven is mostly for devs, but as testers, we use it to manage our frameworkd
+    -> take advantage of functionalities
+
+SELENIUM
+-> using Selenium version 3.141.59
+
+What is a Dependency?
+-> the .jar files are being added to the External Libraries taht allow us to use the selenium libraries through pom.xml
+-> automatically downloaded by maven when added as a <dependencies> tag addition
+
+Where do we get the exp data?
+-> coming from requirement document
+
+Where do we get actual data?
+   -> coming from the browser itself; validating against the exp data
+   -> when we do testing, we get actual data
+
+=========================================================
+
+- To be able to do any action on any web element, there are some certain steps we have to follow:
+ #1. We have to locate the web element that we want to work on
+ #2. To locate we have to use a set of methods coming from Selenium library
+    - findElement()
+    - locator methods
+ #3. We decide what action we want to apply, find the method, and use it on the already located web element
+    - click
+
+
+ - .findElement(LOCATOR);
+  1. This method finds and returns Single web element
+  2. it accepts a locator argument, and finds the requested web element using locator
+  3. Return type: WebElement type (comes from Selenium library)
+  4. It will throw "NoSuchElementException"
+    - if you provide a wrong locator
+    - if your page does not load as fast as it should
+
+ - What is a locator?
+  - Locators help us locate web elements using Selenium WebDriver.
+  - Locators are basically 8 methods coming form selenium library
+
+  - There are total 8 locators
+  - We will learn 6 of them
+
+#1. linkText:
+  - this locator will work through the text of all the links in the page,and return matching link
+  - It accepts a string as the text of the link we are trying to locate
+  - it will ONLY ONLY ONLY works on links <a> anchor tags
+  - This method looks for exact text match
+  - it is similar to .equal method from java
+  - it will search through HTML code and return first matching result
+
+  EX: <a href="https://something.com"> Something </a>
+     driver.findElement(By.linkText("Something"));
+
+#2. partialLinkText:
+    - same as the linkText locator with minor changes
+    - looks for partial text that is evident in an anchor tag <a>
+    - similar to the contains(); method
+
+    EX: <a href="https://something.com"> Something Awesome is behind this Link!!</a>
+         driver.findElement(By.partialLinkText("Something Awesome"));
