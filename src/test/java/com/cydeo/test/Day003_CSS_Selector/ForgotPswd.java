@@ -1,4 +1,4 @@
-package com.cydeo.test.Day003;
+package com.cydeo.test.Day003_CSS_Selector;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

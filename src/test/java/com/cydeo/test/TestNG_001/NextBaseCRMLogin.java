@@ -13,6 +13,7 @@ public class NextBaseCRMLogin {
     WebDriver driver;
 
 @Test (dataProviderClass = SignIn.class, dataProvider = "signin-provider")
+
     public void signin(String username, String password){
 
         WebDriverManager.chromedriver().setup();

@@ -1,13 +1,9 @@
-package com.cydeo.test.Day003;
+package com.cydeo.test.Day003_CSS_Selector;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import static com.cydeo.test.Day003.WebDriverFactory.getDriver;
 
 public class CRMLoginFail {
 
