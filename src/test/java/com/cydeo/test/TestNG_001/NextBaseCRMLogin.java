@@ -14,7 +14,7 @@ public class NextBaseCRMLogin {
 
 @Test (dataProviderClass = SignIn.class, dataProvider = "signin-provider")
 
-    public void signin(String username, String password){
+    public void signin(String username, String password) throws InterruptedException {
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -28,12 +28,13 @@ public class NextBaseCRMLogin {
         pswdField.sendKeys(password);
 
         driver.findElement(By.xpath("//input[@class ='login-btn']")).click();
+         Thread.sleep(1000);
 
        WebElement actElementChatCalls = driver.findElement(By.xpath("//a[@title='Chat and Calls']"));
       String actText= actElementChatCalls.getAttribute("title");
       String exptext = "Chat and Calls";
 
-       Assert.assertEquals(actText, exptext);
+       Assert.assertEquals(actText, exptext," Login with valid credentials FAILED");
 
         driver.quit();
     }

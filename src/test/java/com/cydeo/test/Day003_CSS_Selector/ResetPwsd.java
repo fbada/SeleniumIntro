@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ResetPwsd {
-@Test
+@Test()
     public static void checkResetPswdText() {
 
         WebDriver driver = WebDriverFactory.getDriver("chrome");

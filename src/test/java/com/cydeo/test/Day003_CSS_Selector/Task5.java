@@ -14,9 +14,8 @@ import org.testng.annotations.Test;
 
 public class Task5 {
 
-    @Test
+    @Test()
     public static void checkResetPswdError() {
-
 
         WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.get("https://login1.nextbasecrm.com/?forgot_password=yes");

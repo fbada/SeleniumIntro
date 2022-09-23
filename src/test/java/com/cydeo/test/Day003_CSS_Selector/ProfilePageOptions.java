@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class ProfilePageOptions {
-@Test
+@Test()
     public static void checkProfilePage() {
 
         WebDriver driver = WebDriverFactory.getDriver("chrome");
@@ -23,10 +23,10 @@ public class ProfilePageOptions {
         WebElement psdwField = driver.findElement(By.cssSelector("input[name='USER_PASSWORD']"));
         psdwField.sendKeys("UserUser");
 
-        // click the Logi In button
+        // click the Login In button
         driver.findElement(By.cssSelector("input[class ='login-btn']")).click();
 
-        //  The user should be able to click the user profile name, and a drop-down menu will apear.
+        //  The user should be able to click the user profile name, and a drop-down menu will appear.
         driver.findElement(By.xpath("//span[@id='user-name']")).click();
 
         //User should be able to click "My Profile" opiton
@@ -40,6 +40,7 @@ public class ProfilePageOptions {
         } else {
             System.out.println("Incorrect page.");
         }
+
         List<WebElement> list = driver.findElements(By.xpath("//*[@id='profile-menu-filter']/a"));
         System.out.println("There are " + list.size() + " elements");
 
