@@ -1,9 +1,10 @@
-package com.cydeo.test.Day003_CSS_Selector;
+package com.cydeo.test.Utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class WebDriverFactory {
 
@@ -17,7 +18,11 @@ public class WebDriverFactory {
             WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver();
 
-        }else {
+        } else if (browserType.equalsIgnoreCase("safari")) {
+            WebDriverManager.safaridriver().setup();
+            return  new SafariDriver();
+
+        } else {
             System.out.println("Given browser type is NOT supported currently.");
             return null;
         }
