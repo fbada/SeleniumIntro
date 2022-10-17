@@ -1,6 +1,6 @@
 package com.cydeo.test.Day006_AlertIFrame;
 
-import com.cydeo.test.Utilities.WebDriverFactory;
+import com.cydeo.Utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

@@ -1,26 +1,15 @@
 package com.cydeo.test.TestNG_001;
 
-import com.cydeo.test.Utilities.WebDriverFactory;
+import com.cydeo.Utilities.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class NextBaseCRMLogin {
+public class NextBaseCRMLogin extends BaseTest {
 
-    WebDriver driver;
-
-   @BeforeMethod
-    public void setup(){
-        driver = WebDriverFactory.getDriver("chrome");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
 @Test (dataProviderClass = SignIn.class, dataProvider = "signin-provider")
 
     public void signin(String username, String password) throws InterruptedException {
@@ -41,8 +30,5 @@ public class NextBaseCRMLogin {
        Assert.assertEquals(actText, exptext," Login with valid credentials FAILED");
 
     }
-    @AfterMethod
-    public void tearDown(){
-       driver.quit();
-    }
+
 }

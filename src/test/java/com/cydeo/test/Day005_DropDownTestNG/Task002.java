@@ -1,6 +1,6 @@
 package com.cydeo.test.Day005_DropDownTestNG;
 
-import com.cydeo.test.Utilities.WebDriverFactory;
+import com.cydeo.Utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;

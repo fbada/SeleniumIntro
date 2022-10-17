@@ -1,11 +1,10 @@
 package com.cydeo.test.Day007_WebTables;
 
-import com.cydeo.test.Utilities.BaseTest;
+import com.cydeo.Utilities.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;

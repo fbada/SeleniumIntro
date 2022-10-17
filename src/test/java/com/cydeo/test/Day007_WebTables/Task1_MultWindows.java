@@ -1,10 +1,9 @@
 package com.cydeo.test.Day007_WebTables;
 
-import com.cydeo.test.Utilities.BaseTest;
-import com.cydeo.test.Utilities.BrowserUtils;
-import com.cydeo.test.Utilities.ConfigReader;
+import com.cydeo.Utilities.BaseTest;
+import com.cydeo.Utilities.BrowserUtils;
+import com.cydeo.Utilities.ConfigurationReader;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -19,13 +18,13 @@ public class Task1_MultWindows extends BaseTest {
  */
     @Test
     public void multiple_window_test(){
-        driver.get(ConfigReader.getProperty("envt1")+"windows");
-        BrowserUtils.wait(driver, 3);
-        BrowserUtils.verifyTitle(driver, ConfigReader.getProperty("title1"));
+        driver.get(ConfigurationReader.getProperty("envt1")+"windows");
+        BrowserUtils.wait(3);
+        BrowserUtils.verifyTitle(driver, ConfigurationReader.getProperty("title1"));
         driver.findElement(By.xpath("//a[contains(text(),'Here')]")).click();
         driver.findElement(By.xpath("//a[contains(.,'CYDEO')]")).click();
 
-        String expTitle = ConfigReader.getProperty("title2");
+        String expTitle = ConfigurationReader.getProperty("title2");
         // traverse through the handles
         for(String eachHandle : driver.getWindowHandles()){
             driver.switchTo().window(eachHandle);
