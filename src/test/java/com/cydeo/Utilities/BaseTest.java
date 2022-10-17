@@ -11,8 +11,6 @@ public abstract class BaseTest {
     @BeforeMethod
     public void setUp(){
         driver = Driver002.getDriver();
-        driver.manage().window().maximize();
-        BrowserUtils.wait(4);
     }
 
     @AfterMethod

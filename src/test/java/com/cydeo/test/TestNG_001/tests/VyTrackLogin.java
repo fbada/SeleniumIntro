@@ -2,10 +2,9 @@ package com.cydeo.test.TestNG_001.tests;
 
 import com.cydeo.test.TestNG_001.DataSet.UserCreds;
 import com.cydeo.test.TestNG_001.pages.VyTrackLoginPage;
-import com.cydeo.Utilities.*;
 import org.testng.annotations.Test;
 
-public class VyTrackLogin extends TestBase {
+public class VyTrackLogin {
 
    @Test(dataProviderClass = UserCreds.class, dataProvider = "UserCredAll")
     public void check_pos_login(String usr, String pswd){

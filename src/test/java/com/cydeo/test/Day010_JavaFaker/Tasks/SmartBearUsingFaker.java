@@ -2,6 +2,7 @@ package com.cydeo.test.Day010_JavaFaker.Tasks;
 
 import com.cydeo.Utilities.BaseTest;
 import com.cydeo.Utilities.SmartBearUtils;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -13,7 +14,8 @@ public class SmartBearUsingFaker extends BaseTest {
     public void fill_out_order(){
         SmartBearUtils.loginSmartBear(driver, "Tester", "test");
         SmartBearUtils.placeOrder(driver);
-        SmartBearUtils.fillOutBillingInfo(driver);
+        Faker fake = new Faker();
+        SmartBearUtils.fillOutBillingInfo(driver, fake);
     }
 
     @Test

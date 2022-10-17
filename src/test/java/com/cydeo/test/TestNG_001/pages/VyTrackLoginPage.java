@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import static com.cydeo.Utilities.BrowserUtils.POM_navigate_toMethod;
 
-public class VyTrackLoginPage extends BaseTest {
+public class VyTrackLoginPage  {
 
    public VyTrackLoginPage(){
 
-       PageFactory.initElements(Driver002.getDriver(), this);
+       PageFactory.initElements(Driver.getDriver(), this);
    }
 
     @FindBy (xpath = "//input[@id ='prependedInput']")
@@ -30,30 +30,32 @@ public class VyTrackLoginPage extends BaseTest {
     public WebElement getHelpBtn;
 
 public void login_ValidTest(){
-    POM_navigate_toMethod("envt3");
+   Driver.getDriver().get(ConfigurationReader.getProperty("envt3"));
    email.sendKeys(ConfigurationReader.getProperty("username"));
    password.sendKeys(ConfigurationReader.getProperty("password"));
    submitButton.click();
     BrowserUtils.wait(2);
    Assert.assertTrue(getHelpBtn.isDisplayed());
-   Driver002.closeDriver();
+
 }
 
 public void login_Base(String usr, String pswd) {
-    POM_navigate_toMethod("envt3");
+    Driver.getDriver().get(ConfigurationReader.getProperty("envt3"));
     email.sendKeys(usr);
     password.sendKeys(pswd);
     submitButton.click();
     BrowserUtils.wait(2);
     Assert.assertTrue(getHelpBtn.isDisplayed());
+    Driver.closeDriver();
 }
 
 public void login_Invalid(String usr, String pswd){
-    POM_navigate_toMethod("envt3");
+    Driver.getDriver().get(ConfigurationReader.getProperty("envt3"));
         email.sendKeys(usr);
         password.sendKeys(pswd);
         submitButton.click();
         Assert.assertTrue(errorMsg.isDisplayed());
+        Driver.closeDriver();
     }
 
 

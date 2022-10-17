@@ -1,6 +1,7 @@
 package com.cydeo.test.Day010_JavaFaker.Tasks;
 
 import com.cydeo.Utilities.BaseTest;
+import com.cydeo.Utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -44,5 +45,6 @@ public class gasMileage extends BaseTest {
 
        assertTrue(exp.equals(act));
 
+       driver.quit();
     }
 }

@@ -33,28 +33,19 @@ public class SmartBearUtils {
         driver.findElement(By.xpath("//input[@id='ctl00_MainContent_fmwOrder_txtQuantity']")).sendKeys("2");
         driver.findElement(By.xpath("//input[@value='Calculate']")).click();
     }
-    public static void fillOutBillingInfo(WebDriver driver){
+    public static void fillOutBillingInfo(WebDriver driver, Faker faker){
 
-        Faker faker = new Faker();
-        String name = faker.name().fullName();
-        String street = faker.address().streetAddress();
-        String city = faker.address().city();
-        String state = faker.address().stateAbbr();
-        String zip = faker.numerify("#####");
-        String creditCard = faker.finance().creditCard().replaceAll("-","");
-
-
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys(name);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(street);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys(city);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys(state);
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(zip);
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtName")).sendKeys(faker.name().fullName());
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox2")).sendKeys(faker.address().streetAddress());
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox3")).sendKeys(faker.address().city());
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox4")).sendKeys(faker.address().city());
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox5")).sendKeys(faker.numerify("#####"));
 
         WebElement radioVisa = driver.findElement(By.xpath("//input[@id='ctl00_MainContent_fmwOrder_cardList_0']"));
         radioVisa.click();
         assertTrue(radioVisa.isSelected());
 
-        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys(creditCard);
+        driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox6")).sendKeys(faker.finance().creditCard().replaceAll("-",""));
         driver.findElement(By.id("ctl00_MainContent_fmwOrder_TextBox1")).sendKeys("10/23");
 
         driver.findElement(By.xpath("//a[@id='ctl00_MainContent_fmwOrder_InsertButton']")).click();
@@ -62,6 +53,7 @@ public class SmartBearUtils {
         WebElement confirmOrderMsg = driver.findElement(By.xpath("//strong[contains(text(), 'order has')]"));
         String act = confirmOrderMsg.getText(), exp = "New order has been successfully added.";
         assertEquals(act, exp);
+        Driver002.closeDriver();
 
     }
     public static void CheckOrderStats(WebDriver driver, String str, String expDate){

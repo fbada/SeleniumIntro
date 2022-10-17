@@ -4,11 +4,14 @@ import com.cydeo.Utilities.ConfigurationReader;
 import com.cydeo.Utilities.Driver;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class RegistrationPage {
 
@@ -35,20 +38,20 @@ public class RegistrationPage {
    @FindBy(xpath = "//input[@name='phone']")
    private WebElement phoneNumber;
 
-   @FindBy(xpath = "//input[@value='female']")
-   private WebElement gender;
+   @FindAll(@FindBy(xpath = "//input[@type='radio']"))
+   private List<WebElement> gender;
 
    @FindBy(xpath = "//input[@name='birthday']")
    private WebElement dateOfBirth;
 
-   @FindBy(xpath = "//select[@name='department']/option[@value='DA']")
+   @FindBy(xpath = "//select[@name='department']")
    private WebElement department;
 
-   @FindBy(xpath = "//select[@name='job_title']/option[2]")
+   @FindBy(xpath = "//select[@name='job_title']")
    private WebElement jobTitle;
 
-   @FindBy(xpath = "//input[@id='inlineCheckbox2']")
-   private WebElement programmingLang;
+  @FindAll( @FindBy(xpath = "//input[@class='form-check-input']"))
+   private List<WebElement> programmingLang;
 
    @FindBy(xpath = "//button[@id='wooden_spoon']")
    private WebElement signUpBtn;
@@ -59,22 +62,34 @@ public class RegistrationPage {
    @FindBy(xpath = "//div[@class='form-group has-feedback has-error']")
    private WebElement errorAlrt;
 
-   public void filloutForm(Faker faker){
+   public void filloutForm(Faker faker ){
       Driver.getDriver().get(ConfigurationReader.getProperty("cydeoRegPage"));
 
       firstName.sendKeys(faker.name().firstName());
-      lastName.sendKeys(faker.name().lastName());
+      lastName.sendKeys(faker.name().lastName().replaceAll("'",""));
       username.sendKeys(faker.bothify("???##????"));
-      emailAddress.sendKeys(faker.internet().emailAddress());
+      emailAddress.sendKeys(faker.internet().emailAddress().toLowerCase());
       password.sendKeys(faker.internet().password());
       phoneNumber.sendKeys(faker.numerify("###-###-####"));
-      gender.click();
+
+      for(WebElement each : gender){
+         gender.get(faker.number().numberBetween(0, 2)).click();
+      }
+
       SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
       String dob = sdf.format(faker.date().birthday());
       dateOfBirth.sendKeys(dob);
-      department.click();
-      jobTitle.click();
-      programmingLang.click();
+
+      Select jobDropdown = new Select(department);
+      jobDropdown.selectByIndex(faker.number().numberBetween(1, 9));
+
+      Select deptJobDropdown = new Select(jobTitle);
+      deptJobDropdown.selectByIndex(faker.number().numberBetween(1, 9));
+
+      for (WebElement each : programmingLang) {
+         programmingLang.get(faker.number().numberBetween(0, 2)).click();
+      }
+
       signUpBtn.click();
 
       //15. Verify success message “You’ve successfully completed registration.” is

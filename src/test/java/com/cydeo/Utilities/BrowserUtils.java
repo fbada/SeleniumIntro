@@ -22,10 +22,10 @@ public class BrowserUtils {
 
     public static void impWaiit(int sec){
 
-        Driver002.getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
     }
     public static void POM_navigate_toMethod(String str){
-        Driver002.getDriver().get(str);
+        Driver.getDriver().get(str);
     }
 
 
